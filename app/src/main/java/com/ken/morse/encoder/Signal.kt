@@ -8,8 +8,8 @@ enum class Signal private constructor(var audible: Boolean, val durationUnits: I
     DOT(true, 1, "・"),
     DASH(true, 3, "－"),
     SIGNAL_SPACER(false, 1, ""),
-    LETTER_SPACER(false, 3, ""),
-    WORD_SPACER(false, 7, " ");
+    LETTER_SPACER(false, 3, " "),
+    WORD_SPACER(false, 7, "  ");
 
     companion object {
         private val signalsForCharacter = HashMap<Char, List<Signal>>()

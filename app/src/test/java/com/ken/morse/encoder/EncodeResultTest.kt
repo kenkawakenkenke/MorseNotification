@@ -15,7 +15,7 @@ class EncodeResultTest {
     @Test
     fun testToString() {
         assertEquals(
-                "・－ ・",
+                "・ －  ・",
                 EncodeResult("","",listOf(DOT, LETTER_SPACER, DASH, WORD_SPACER, DOT)).toString())
     }
 

@@ -58,6 +58,11 @@ class MorseEncoderTest {
                         listOf(DASH, SIGNAL_SPACER, DOT, SIGNAL_SPACER, DASH, SIGNAL_SPACER, DASH, LETTER_SPACER,
                         DOT, SIGNAL_SPACER, DASH, SIGNAL_SPACER, DOT, SIGNAL_SPACER, DASH, SIGNAL_SPACER, DOT)),
                 encoder.encode("健"))
+
+        // －・－－（ケ）　・－・－・（ン）
+        assertEquals("Kana gets converted to pronunciation",
+                "abc",
+                encoder.encode("Morse Notification").toString())
     }
 
 }

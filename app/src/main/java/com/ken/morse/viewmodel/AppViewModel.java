@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.databinding.Bindable;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.widget.CompoundButton;
 import com.ken.morse.base.ObservableViewModel;
 import com.ken.morse.model.App;
@@ -42,6 +43,7 @@ public class AppViewModel extends ObservableViewModel implements Comparable<AppV
     if (isChecked == getNotificationEnabled()) {
       return;
     }
+    Log.w(TAG, (isChecked?"enabled":"disabled")+": "+app.appID);
     app.setIsNotificationEnabled(isChecked);
     super.notifyChange();
     parentViewModel.invalidateRecycler();

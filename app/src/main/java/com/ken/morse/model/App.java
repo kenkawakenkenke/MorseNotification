@@ -21,6 +21,8 @@ public class App {
     defaultEnabledApps.add("com.facebook.orca");
     // Line
     defaultEnabledApps.add("jp.naver.line.android");
+    // Gmail
+    defaultEnabledApps.add("com.google.android.gm");
   }
 
   private final Context context;
