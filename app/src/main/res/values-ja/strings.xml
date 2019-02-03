@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">モールス通知</string>
+  <string name="chk_enable">有効</string>
+  <string name="chk_global_enable">モールス通知を有効にする</string>
+  <string name="lbl_enabled">有効</string>
+  <string name="lbl_disabled">無効</string>
+  <string name="msg_enable_me">このアプリは他のアプリの通知を読み取る必要があります。下のボタンをクリックし、表示される画面の「モールス通知」のチェックボックスをONにしてください。基本的にこれ、怪しいアプリにはしないほうがいい設定です。本アプリはソースコードを下リンクにアップしているのでこれを読んで納得するか、僕を信用できなければアプリの利用を諦めてください。</string>
+  <string name="btn_enable_me">設定で「モールス通知」に通知許可を与える</string>
+</resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  >
+
+  <data>
+    <import type="android.view.View"/>
+    <variable
+      name="viewModel"
+      type="com.ken.morse.viewmodel.MainViewModel"/>
+  </data>
+
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ken.morse.MainActivity">
+
+
+    <include
+      layout="@layout/enable_me_popup"
+      app:viewModel="@{viewModel}"
+      />
+
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal">
+      <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/chk_global_enable"
+        android:onCheckedChanged="@{viewModel.onNotificationEnabledChanged}"
+        android:checked="@{viewModel.notificationEnabled}"
+        />
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{viewModel.notificationEnabled? @string/lbl_enabled : @string/lbl_disabled}"
+        />
+    </LinearLayout>
+
+    <Button
+      android:id="@+id/send_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Button"
+      android:onClick="@{viewModel.openSettings}"/>
+
+    <android.support.v7.widget.RecyclerView
+      android:id="@+id/apps_recycler"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+      />
+    <!--app:data="@{viewModel.userIds}"-->
+
+  </LinearLayout>
+</layout>

@@ -1,0 +1,9 @@
+<resources>
+  <string name="app_name">Morse Notification</string>
+  <string name="chk_enable">Enable</string>
+  <string name="chk_global_enable">Enable Morse vibrations</string>
+  <string name="lbl_enabled">Enabled</string>
+  <string name="lbl_disabled">Disabled</string>
+  <string name="msg_enable_me">This app needs to be able to listen to notifications in order to relay them as Morse code encoded vibrations. Please click the button below and enable the checkbox for \"Morse Notification\". It\'s usually a bad idea to allow this setting for apps you don\'t trust. I\'ve open sourced this app so it\'s a bit more trustworthy, but if you can\'t trust me then feel free to just uninstall the app :)</string>
+  <string name="btn_enable_me">Enable \"Morse Notification\" to read notifications in the notification settings.</string>
+</resources>
