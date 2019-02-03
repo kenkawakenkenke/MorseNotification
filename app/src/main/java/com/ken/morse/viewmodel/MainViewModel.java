@@ -12,7 +12,6 @@ import android.widget.CompoundButton;
 import com.ken.morse.MorseNotifier;
 import com.ken.morse.base.ObservableViewModel;
 import com.ken.morse.databinding.ActivityMainBinding;
-import com.ken.morse.encoder.EncodeResult;
 import com.ken.morse.model.App;
 import com.ken.morse.model.Notifier;
 import java.util.ArrayList;
@@ -25,7 +24,6 @@ public class MainViewModel extends ObservableViewModel {
   private final Activity activity;
   private final MorseNotifier morseNotifier;
   private final Notifier notifier;
-  private final List<AppViewModel> apps = new ArrayList<>();
   private final AppRecyclerViewAdapter appRecyclerViewAdapter;
 
   public MainViewModel(Activity activity, ActivityMainBinding layoutBinding) {
@@ -35,43 +33,21 @@ public class MainViewModel extends ObservableViewModel {
     prefs = PreferenceManager.getDefaultSharedPreferences(activity);
 
     this.notifier = new Notifier(activity, prefs);
+    List<AppViewModel> appViewModels = new ArrayList<>();
     for(App app : this.notifier.apps()) {
-      apps.add(new AppViewModel(activity, app, prefs));
+      appViewModels.add(new AppViewModel(activity, app, prefs, this));
     }
-    appRecyclerViewAdapter = new AppRecyclerViewAdapter(apps);
-
-    layoutBinding.appsRecycler.setAdapter(appRecyclerViewAdapter);
-
-    if (Settings.Secure.getString(activity.getContentResolver(),"enabled_notification_listeners").contains(activity.getApplicationContext().getPackageName()))
-    {
-      Log.w("MorseNotification", "enabled!");
-    } else {
-      Log.w("MorseNotification", "disabled!");
-    }
+    appRecyclerViewAdapter = new AppRecyclerViewAdapter(appViewModels, layoutBinding.appsRecycler);
   }
 
-  private String text = "sos";
-
-  public void textUpdated(CharSequence s, int start, int before, int count) {
-    text = s.toString();
-    super.notifyChange();
+  public void invalidateRecycler() {
+    appRecyclerViewAdapter.resortItems();
   }
 
   @Bindable
   public Boolean getNotificationListenerAccessEnabled() {
-    Log.w("MorseNotification", "check status");
     // From https://stackoverflow.com/questions/24145343/checking-android-system-security-notification-access-setting-programmatically
     return Settings.Secure.getString(activity.getContentResolver(),"enabled_notification_listeners").contains(activity.getApplicationContext().getPackageName());
-  }
-
-  @Bindable
-  public String getText() {
-    return text;
-  }
-
-  public void doSend(View view) {
-    EncodeResult result = morseNotifier.notifyText(text);
-    Log.w(TAG, result.getEncodedText()+": "+result);
   }
 
   @Bindable
@@ -85,7 +61,6 @@ public class MainViewModel extends ObservableViewModel {
   }
 
   public void openSettings(View view) {
-    Log.d(TAG, "open settings");
     Intent callGPSSettingIntent = new Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS);
     activity.startActivity(callGPSSettingIntent);
   }

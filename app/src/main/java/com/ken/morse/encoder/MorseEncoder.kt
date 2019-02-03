@@ -5,10 +5,8 @@ import com.atilika.kuromoji.ipadic.Tokenizer
 import java.util.*
 
 class MorseEncoder {
-    private val TAG = "MorseNotification"
-
     /**
-     * Encode a free text into Morse signals.
+     * Encode free text into Morse signals.
      */
     fun encode(origText: String): EncodeResult {
         val normalizedText = normalize(origText)

@@ -7,4 +7,5 @@
   <string name="lbl_disabled">無効</string>
   <string name="msg_enable_me">このアプリは他のアプリの通知を読み取る必要があります。下のボタンをクリックし、表示される画面の「モールス通知」のチェックボックスをONにしてください。基本的にこれ、怪しいアプリにはしないほうがいい設定です。本アプリはソースコードを下リンクにアップしているのでこれを読んで納得するか、僕を信用できなければアプリの利用を諦めてください。</string>
   <string name="btn_enable_me">設定で「モールス通知」に通知許可を与える</string>
+  <string name="link_app_rep"><a href='https://github.com/kenkawakenkenke/MorseNotification'>https://github.com/kenkawakenkenke/MorseNotification</a></string>
 </resources>

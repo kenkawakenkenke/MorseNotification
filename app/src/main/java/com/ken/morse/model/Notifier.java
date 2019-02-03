@@ -2,6 +2,7 @@ package com.ken.morse.model;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,19 @@ public class Notifier {
     for(App app : apps) {
       appForId.put(app.appID, app);
     }
+
+    // Hacky async task to pre-load the expensive names and icons in the background...
+    AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
+      @Override
+      protected Void doInBackground(Void... voids) {
+        for (App app : apps) {
+          app.appName();
+          app.drawable();
+        }
+        return null;
+      }
+    };
+    task.execute();
   }
 
   public List<App> apps() {
